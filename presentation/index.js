@@ -391,7 +391,29 @@ export default class Presentation extends React.Component {
           bgDarken={1}
         >
           <Heading size={4} textColor="primary">
+            Slides on creating an eslint plugin
+          </Heading>
+          <br />
+          <br />
+        </Slide>
+        <Slide
+          transition={["fade"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Heading size={4} textColor="primary">
             Demo
+          </Heading>
+          <br />
+          <br />
+        </Slide>
+        <Slide
+          transition={["fade"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Heading size={4} textColor="primary">
+            Slides on creating custom codemods
           </Heading>
           <br />
           <br />
