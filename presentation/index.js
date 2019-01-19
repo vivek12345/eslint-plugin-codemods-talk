@@ -12,7 +12,8 @@ import {
   ListItem,
   List,
   Slide,
-  Text
+  Text,
+  BlockQuote
 } from "spectacle";
 
 import "prismjs/components/prism-jsx";
@@ -35,9 +36,10 @@ const images = {
   disclaimer: require("../assets/disclaimer.jpg"),
   city: require("../assets/tslogo.svg"),
   logo: require("../assets/logo.svg"),
-  babel: require("../assets/babel.png"),
+  eslint: require("../assets/eslint-custom.png"),
   removePropTypes: require("../assets/removePropTypes.png"),
-  babelLodash: require("../assets/babelLodash.png")
+  babelLodash: require("../assets/babelLodash.png"),
+  eslintRulesImage: require("../assets/eslint-rules-image.png")
 };
 
 preloader(images);
@@ -59,14 +61,9 @@ export default class Presentation extends React.Component {
           bgImage={images.city.replace("/", "")}
           bgDarken={1}
         >
-          <Image
-            src={images.babel.replace("/", "")}
-            margin="40px auto 60px"
-            height="200px"
-          />
           <Heading size={1} caps fit textColor="secondary">
-            🕵️‍ Writing Custom <span style={{ color: "#01AAFF" }}>Babel</span>{" "}
-            Plugins
+            🕵️‍ Writing Custom <span style={{ color: "#01AAFF" }}>Eslint</span>{" "}
+            Plugins and <span style={{ color: "#01AAFF" }}>codemods</span>
           </Heading>
         </Slide>
         <Slide
@@ -133,20 +130,29 @@ export default class Presentation extends React.Component {
               <br />
               <Appear fid="2">
                 <ListItem textColor="secondary">
-                  What is <span style={{ color: "#01AAFF" }}>Babel</span> and
-                  why do we need it.
+                  What is <span style={{ color: "#01AAFF" }}>ESLINT</span> and
+                  why do we need it?
+                </ListItem>
+              </Appear>
+              <br />
+              <br />
+              <Appear fid="2">
+                <ListItem textColor="secondary">
+                  What are the other{" "}
+                  <span style={{ color: "#01AAFF" }}>JS-Linters</span>{" "}
+                  available?
                 </ListItem>
               </Appear>
               <br />
               <br />
               <Appear fid="3">
                 <ListItem textColor="secondary">
-                  Practical demo for transpiling code using{" "}
-                  <span style={{ color: "#01AAFF" }}>AST and Babel</span>
+                  Demo writing few eslint plugins and codemods using{" "}
+                  <span style={{ color: "#01AAFF" }}>Espree </span>
+                  and
+                  <span style={{ color: "#01AAFF" }}> jscodeshift</span>
                 </ListItem>
               </Appear>
-              <br />
-              <br />
             </List>
             <Appear fid="4">
               <Text textColor="white">
@@ -155,7 +161,8 @@ export default class Presentation extends React.Component {
                   margin="40px auto 60px"
                   height="100px"
                 />
-                This talk is not a deep dive on parsing, tokenizing and lexing
+                This talk is not a deep dive on parsing, tokenizing and lexical
+                scoping
               </Text>
             </Appear>
           </div>
@@ -318,54 +325,119 @@ export default class Presentation extends React.Component {
             margin="40px auto 60px"
           />
         </Slide>
-
         <Slide
           transition={["slide"]}
           bgImage={images.city.replace("/", "")}
           bgDarken={1}
         >
           <Heading size={1} caps lineHeight={1} textColor="primary">
-            Why do we need babel?
+            Why do we need a linter?
           </Heading>
           <br />
           <br />
           <List>
             <Appear fid="1">
               <ListItem textColor="secondary">
-                To use next generation javascript features
+                Static analysis of code to find possible errors
               </ListItem>
             </Appear>
             <br />
             <br />
             <Appear fid="2">
               <ListItem textColor="secondary">
-                To transpile JSX used in React
+                Encourage best practices
               </ListItem>
             </Appear>
             <br />
             <br />
             <Appear fid="3">
               <ListItem textColor="secondary">
-                To add polyfills for older browsers
+                Enforce style consistency
               </ListItem>
             </Appear>
             <br />
             <br />
           </List>
         </Slide>
-
         <Slide
           transition={["slide"]}
           bgImage={images.city.replace("/", "")}
           bgDarken={1}
         >
-          <Text textSize="1.5em" caps lineHeight={1} textColor="primary">
-            babel-plugin-lodash
+          <Heading size={4} caps lineHeight={1} textColor="primary">
+            Other JS linters available to us?
+          </Heading>
+          <br />
+          <br />
+          <List>
+            <Appear fid="1">
+              <ListItem textColor="secondary">JSLint</ListItem>
+            </Appear>
+            <br />
+            <br />
+            <Appear fid="2">
+              <ListItem textColor="secondary">JSHint</ListItem>
+            </Appear>
+            <br />
+            <br />
+            <Appear fid="3">
+              <ListItem textColor="secondary">JSCS</ListItem>
+            </Appear>
+            <br />
+            <br />
+          </List>
+        </Slide>
+        <Slide
+          transition={["slide"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Heading size={1} caps lineHeight={1} textColor="primary">
+            Eslint Features
+          </Heading>
+          <br />
+          <br />
+          <List>
+            <Appear fid="1">
+              <ListItem textColor="secondary">
+                Write your own custom rules
+              </ListItem>
+            </Appear>
+            <br />
+            <br />
+            <Appear fid="2">
+              <ListItem textColor="secondary">Custom formatters</ListItem>
+            </Appear>
+            <br />
+            <br />
+            <Appear fid="3">
+              <ListItem textColor="secondary">Custom Parser</ListItem>
+            </Appear>
+            <br />
+            <br />
+            <Appear fid="3">
+              <ListItem textColor="secondary">Turn on/off the rules</ListItem>
+            </Appear>
+            <br />
+            <br />
+            <Appear fid="3">
+              <ListItem textColor="secondary">Set to warn or error</ListItem>
+            </Appear>
+            <br />
+            <br />
+          </List>
+        </Slide>
+        <Slide
+          transition={["slide"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Text textSize="1.5em" textColor="secondary">
+            Eslint rule on VS Code
           </Text>
-          <br />
-          <br />
+
           <Image
-            src={images.babelLodash.replace("/", "")}
+            src={images.eslintRulesImage.replace("/", "")}
             margin="40px auto 60px"
           />
         </Slide>
@@ -374,79 +446,66 @@ export default class Presentation extends React.Component {
           bgImage={images.city.replace("/", "")}
           bgDarken={1}
         >
-          <Text textSize="1.5em" caps lineHeight={1} textColor="primary">
-            babel-plugin-transform-react-remove-prop-types
-          </Text>
-          <br />
-          <br />
-          <Image
-            src={images.removePropTypes.replace("/", "")}
-            margin="40px auto 60px"
-          />
-        </Slide>
-
-        <Slide
-          transition={["fade"]}
-          bgImage={images.city.replace("/", "")}
-          bgDarken={1}
-        >
-          <Heading size={4} textColor="primary">
-            Slides on creating an eslint plugin
-          </Heading>
-          <br />
-          <br />
-        </Slide>
-        <Slide
-          transition={["fade"]}
-          bgImage={images.city.replace("/", "")}
-          bgDarken={1}
-        >
-          <Heading size={4} textColor="primary">
-            Demo
-          </Heading>
-          <br />
-          <br />
-        </Slide>
-        <Slide
-          transition={["fade"]}
-          bgImage={images.city.replace("/", "")}
-          bgDarken={1}
-        >
-          <Heading size={4} textColor="primary">
-            Slides on creating custom codemods
-          </Heading>
-          <br />
-          <br />
-        </Slide>
-        <Slide
-          transition={["fade"]}
-          bgImage={images.city.replace("/", "")}
-          bgDarken={1}
-        >
-          <Heading size={4} textColor="primary">
-            What is a .babelrc file?
-          </Heading>
-          <br />
-          <br />
           <Text textSize="1.5em" textColor="secondary">
-            It's a file to specify your babel presets and plugins
-          </Text>
-        </Slide>
-        <Slide
-          transition={["slide"]}
-          bgImage={images.city.replace("/", "")}
-          bgDarken={1}
-        >
-          <Text textSize="1.5em" textColor="secondary">
-            Sample .babelrc file
+            Eslint plugins basic Code Structure
           </Text>
           <br />
           <br />
           <CodePane
             lang="js"
             theme="external"
-            source={require("raw-loader!../assets/babelrc.example")}
+            source={require("raw-loader!../assets/eslintPlgin.example")}
           />
+        </Slide>
+        <Slide
+          transition={["slide"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Text textSize="1.5em" textColor="secondary">
+            Eslint Rules basic code structure
+          </Text>
+          <br />
+          <br />
+          <CodePane
+            lang="js"
+            theme="external"
+            source={require("raw-loader!../assets/estPlugin.example")}
+          />
+        </Slide>
+        <Slide
+          transition={["slide"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Heading size={1} caps lineHeight={1} textColor="primary">
+            Working with Rules
+          </Heading>
+          <br />
+          <br />
+          <List>
+            <Appear fid="2">
+              <ListItem textColor="secondary">
+                Source file inside lib/rules/rule-name.js
+              </ListItem>
+            </Appear>
+            <br />
+            <br />
+            <Appear fid="3">
+              <ListItem textColor="secondary">
+                Test file inside tests/lib/rules
+              </ListItem>
+            </Appear>
+            <br />
+            <br />
+            <Appear fid="3">
+              <ListItem textColor="secondary">
+                A Markdown documentation file inside docs/rules
+              </ListItem>
+            </Appear>
+            <br />
+            <br />
+          </List>
         </Slide>
         <Slide
           transition={["fade"]}
@@ -454,12 +513,53 @@ export default class Presentation extends React.Component {
           bgDarken={1}
         >
           <Heading size={4} textColor="primary">
-            Babel Presets?
+            Demo on eslint plugins
+          </Heading>
+          <br />
+          <br />
+          <Link
+            href="https://github.com/vivek12345/eslint-plugin-prefer-await"
+            textColor="primary"
+          >
+            Github Repo
+          </Link>
+        </Slide>
+        <Slide
+          transition={["slide"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Heading size={4} lineHeight={1} textColor="primary">
+            Using eslint plugins in your .eslintrc file
+          </Heading>
+          <br />
+          <br />
+          <List>
+            <Appear fid="3">
+              <CodePane
+                lang="js"
+                theme="external"
+                source={require("raw-loader!../assets/eslintConfig.example")}
+              />
+            </Appear>
+            <br />
+            <br />
+          </List>
+        </Slide>
+        <Slide
+          transition={["fade"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Heading size={4} textColor="primary">
+            What are codemods?
           </Heading>
           <br />
           <br />
           <Text textSize="1.5em" textColor="secondary">
-            Array of babel plugins
+            Codemod is a tool/library to assist you with large-scale codebase
+            refactors that can be partially automated but still require human
+            oversight and occasional intervention.
           </Text>
         </Slide>
         <Slide
@@ -468,20 +568,77 @@ export default class Presentation extends React.Component {
           bgDarken={1}
         >
           <Heading size={4} textColor="primary">
-            Order of execution
+            What is jscodeshift?
           </Heading>
           <br />
           <br />
-          <Appear fid="2">
-            <Text textSize="1.5em" textColor="secondary">
-              Babel plugins are executed first in top to bottom
-            </Text>
-          </Appear>
-          <Appear fid="2">
-            <Text textSize="1.5em" textColor="secondary">
-              Babel presets are executed in the reverse order from bottom to top
-            </Text>
-          </Appear>
+          <List>
+            <Appear fid="2">
+              <ListItem textColor="secondary">
+                A runner, which executes the provided transform for each file
+                passed to it. It also outputs a summary of how many files have
+                (not) been transformed.
+              </ListItem>
+            </Appear>
+            <br />
+            <br />
+            <Appear fid="2">
+              <ListItem textColor="secondary">
+                A wrapper around recast, providing a different API. Recast is an
+                AST-to-AST transform tool and also tries to preserve the style
+                of original code as much as possible.
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+        <Slide
+          transition={["fade"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Heading size={4} textColor="primary">
+            How to use jscodeshift?
+          </Heading>
+          <br />
+          <br />
+          <List>
+            <Appear fid="2">
+              <CodePane
+                lang="js"
+                theme="external"
+                source={require("raw-loader!../assets/jscodeshift.example")}
+              />
+            </Appear>
+            <br />
+            <br />
+          </List>
+        </Slide>
+        <Slide
+          transition={["slide"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Text textSize="1.5em" textColor="secondary">
+            jscodeshift basic Code Structure
+          </Text>
+          <br />
+          <br />
+          <CodePane
+            lang="js"
+            theme="external"
+            source={require("raw-loader!../assets/codeJscodeshift.example")}
+          />
+        </Slide>
+        <Slide
+          transition={["fade"]}
+          bgImage={images.city.replace("/", "")}
+          bgDarken={1}
+        >
+          <Heading size={4} textColor="primary">
+            Demo on codemods using jscodeshift
+          </Heading>
+          <br />
+          <br />
         </Slide>
         <Slide
           transition={["fade"]}
@@ -496,20 +653,40 @@ export default class Presentation extends React.Component {
           <List>
             <ListItem textColor="secondary">
               <Link
-                href="https://github.com/jamiebuilds/babel-handbook"
+                href="https://eslint.org/docs/developer-guide/working-with-rules#contextreport"
                 textColor="secondary"
               >
-                Babel handbook
+                Eslint Rules Documentation
               </Link>
             </ListItem>
             <br />
             <br />
             <ListItem textColor="secondary">
               <Link
-                href="https://www.sitepoint.com/understanding-asts-building-babel-plugin/"
+                href="http://blog.cowchimp.com/writing-a-custom-eslint-rule-to-spot-undeclared-props/"
                 textColor="secondary"
               >
-                Understanding-asts-building-babel-plugin
+                Writing-a-custom-eslint-rule-to-spot-undeclared-props
+              </Link>
+            </ListItem>
+            <br />
+            <br />
+            <ListItem textColor="secondary">
+              <Link
+                href="https://github.com/facebook/jscodeshift/blob/master/src/collections/Node.js"
+                textColor="secondary"
+              >
+                Jscodeshift all Node level api's
+              </Link>
+            </ListItem>
+            <br />
+            <br />
+            <ListItem textColor="secondary">
+              <Link
+                href="https://github.com/facebook/jscodeshift/blob/master/src/Collection.js"
+                textColor="secondary"
+              >
+                Jscodeshift all collection level api's
               </Link>
             </ListItem>
           </List>

@@ -1,0 +1,4 @@
+plugins: ["myplugin"],
+rules: {
+    "myplugin/await-over-then": ["error"]
+}

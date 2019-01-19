@@ -1,0 +1,9 @@
+module.exports = {
+    rules: {
+        "await-over-then": {
+            create: function (context) {
+                // rule implementation ...
+            }
+        }
+    }
+};
